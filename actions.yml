@@ -12,16 +12,6 @@ runs:
 
     - name: "Check for IT Change ID"
       run: |
-        SCRIPT_HOME="/home/runner/work/_actions/nn-dma/link-work-item/main/scripts/" 
-        echo "Checking for IT Change ID in the PR title"
-        SCRIPT_PATH="${SCRIPT_HOME}get_pull_request_details_for_hash_github.sh"
-        chmod +x $SCRIPT_PATH
-        pr_details=$(${SCRIPT_PATH} $GITHUB_SHA $GITHUB_TOKEN $GITHUB_REPOSITORY)
-        pr_title=$(echo "pr_details" | jq '.title')
-        echo "PR Title: $pr_title"
-        if [ $title =~ IT\ Change\ #[0-9]+ ]; then
-          echo "IT Change ID present in the PR title"
-        else
-          echo "IT Change ID is not present in the PR title"
-        fi
+        cd scripts
+        ./get_pull_request_details_for_hash_github.sh $GITHUB_SHA $GITHUB_TOKEN $GITHUB_REPOSITORY
       shell: bash
