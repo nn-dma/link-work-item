@@ -15,5 +15,7 @@ runs:
     - name: "Check for IT Change ID"
       run: |
         cd scripts
-        ./get_pull_request_details_for_hash_github.sh ${{ github.sha }} ${{ secrets.GH_API_TOKEN }} ${{ github.repository }}
+        ./get_pull_request_details_for_hash_github.sh ${{ github.sha }} ${{ vars.GH_API_TOKEN }} ${{ github.repository }}
       shell: bash
+      env:
+        GH_API_TOKEN: ${{ secrets.GH_API_TOKEN }}
