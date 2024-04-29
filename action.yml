@@ -12,9 +12,6 @@ runs:
         path: .
         fetch-depth: 0
 
-    - name: "Set up env"
-      shell: bash
-
     - name: "Check for IT Change ID"
       run: |
         cd scripts
