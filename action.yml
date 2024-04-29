@@ -8,6 +8,8 @@ runs:
     - name: "Checkout codebase"
       uses: actions/checkout@v4
       with:
+        repository: nn-dma/generate-verification-report
+        path: .
         fetch-depth: 0
 
     - name: "Check for IT Change ID"
