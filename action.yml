@@ -12,6 +12,8 @@ runs:
 
     - name: "Check for IT Change ID"
       run: |
+        pwd 
+        ls
         cd scripts
         ./get_pull_request_details_for_hash_github.sh $GITHUB_SHA $GITHUB_TOKEN $GITHUB_REPOSITORY
       shell: bash
