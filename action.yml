@@ -17,4 +17,4 @@ runs:
         cd scripts
         ./get_pull_request_details_for_hash_github.sh ${{ github.sha }} ${{ env.GH_API_TOKEN }} ${{ github.repository }}
       env:
-        GH_API_TOKEN: ${{ secrets.GH_API_TOKEN }}
+        gh_api_token: ${{ secrets.GH_API_TOKEN }}
