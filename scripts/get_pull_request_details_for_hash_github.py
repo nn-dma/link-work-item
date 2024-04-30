@@ -1,6 +1,8 @@
 import requests
 import argparse
 import json
+import re
+import sys
 from datetime import datetime
 
 def format_timestamp(dt_string: str) -> str:
@@ -9,6 +11,10 @@ def format_timestamp(dt_string: str) -> str:
     # Format datetime object as string
     formatted_string = dt_object.strftime('%Y-%m-%d %H:%M:%S')
     return formatted_string
+
+def pr_title_error():
+    print("PR Title does not match the required format. Please ensure the PR title follows the format: '<Something something ..> - IT Change #<number>'")
+    sys.exit(1)
 
 def get_pull_request_details(commit_hash, github_token, repo):
     """
@@ -35,14 +41,21 @@ def get_pull_request_details(commit_hash, github_token, repo):
         pull_requests = response.json()
         if pull_requests:
             pr = pull_requests[0]
-            return json.dumps({
+            print("Pull request found for the given commit. Here are the details:")
+            payload = json.dumps({
                 "id": pr["id"],
                 "number": pr["number"],
                 "state": pr["state"],
                 "url": pr["html_url"],
-                "merged_at": format_timestamp(pr["merged_at"]),
                 "title": pr["title"]
             })
+            print("")
+            print("Here is the returned payload")
+            print("")
+            print(payload)
+            re.match(' - IT Change #[0-9]+$',  pr["title"]) or pr_title_error()
+            print("")
+            print("PR Title matches the required format.") 
         else:
             return "No pull request found for the given commit."
     else:
