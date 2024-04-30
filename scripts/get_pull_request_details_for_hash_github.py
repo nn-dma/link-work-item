@@ -53,7 +53,7 @@ def get_pull_request_details(commit_hash, github_token, repo):
             print("Here is the returned payload")
             print("")
             print(payload)
-            re.match(' - IT Change #[0-9]+$',  pr["title"]) or pr_title_error()
+            re.search(' - IT Change #[0-9]+$',  pr["title"]) or pr_title_error()
             print("")
             print("PR Title matches the required format.") 
         else:
