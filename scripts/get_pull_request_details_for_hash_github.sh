@@ -12,4 +12,4 @@ python_script_path="$self_dir/$python_file"
 #echo "python script path: $python_script_path"
 
 pr=$(python3 "$python_script_path" --commit $commit_hash --token $github_token --repo $repo)
-echo $pr
+echo "$pr"
