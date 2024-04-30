@@ -41,7 +41,7 @@ def get_pull_request_details(commit_hash, github_token, repo):
         pull_requests = response.json()
         if pull_requests:
             pr = pull_requests[0]
-            print("Pull request found for the given commit. Here are the details:")
+            print("Pull request found for the given commit.")
             payload = json.dumps({
                 "id": pr["id"],
                 "number": pr["number"],
