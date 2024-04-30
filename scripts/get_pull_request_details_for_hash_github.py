@@ -55,7 +55,8 @@ def get_pull_request_details(commit_hash, github_token, repo):
             print(payload)
             re.search(' - IT Change #[0-9]+$',  pr["title"]) or pr_title_error()
             print("")
-            return f"PR Title matches the required format: {pr["title"]}"
+            pr_title = pr["title"]
+            return f"PR Title matches the required format: {pr_title}"
         else:
             return "No pull request found for the given commit."
     else:
