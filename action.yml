@@ -1,19 +1,22 @@
-name: "Check for IT Change ID in PR title"
-description: "Checks for IT Change ID in PR title"
-
+name: 'Check for IT Change ID in PR title'
+description: 'Checks for IT Change ID in PR title'
+inputs:
+  GH_API_TOKEN:
+    description: 'GitHub API Token'
+    required: true
 
 runs:
-  using: "composite"
+  using: 'composite'
   steps:
-    - name: "Checkout codebase"
+    - name: 'Checkout codebase'
       uses: actions/checkout@v4
       with:
         repository: nn-dma/link-work-item
         path: .
         fetch-depth: 0
 
-    - name: "Check for IT Change ID"
+    - name: 'Check for IT Change ID'
       run: |
         cd scripts
-        ./get_pull_request_details_for_hash_github.sh ${{ github.head_ref }} ${{ env.GH_API_TOKEN }} ${{ github.repository }}
+        ./get_pull_request_details_for_hash_github.sh ${{ github.head_ref }} ${{ inputs.GH_API_TOKEN }} ${{ github.repository }}
       shell: bash
