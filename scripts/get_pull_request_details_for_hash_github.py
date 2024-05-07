@@ -91,10 +91,10 @@ def main():
     )
 
     args = parser.parse_args()
-    num_args = args.count()
-    if num_args != 3:
-        parser.print_help()
-        sys.exit(1)
+    # num_args = args.count()
+    # if num_args != 3:
+    #     parser.print_help()
+    #     sys.exit(1)
 
     pr_details = get_pull_request_details(args.commit, args.token, args.repo)
     print(pr_details)
