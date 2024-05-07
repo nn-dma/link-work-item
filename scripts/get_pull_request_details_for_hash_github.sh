@@ -1,5 +1,5 @@
 #!/bin/bash
-set -e
+#set -e
 
 commit_hash=$1
 github_token=$2
