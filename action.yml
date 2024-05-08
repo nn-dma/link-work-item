@@ -15,9 +15,10 @@ runs:
     - name: "Check for IT Change ID"
       run: |
         cd scripts
+        head=$(git rev-parse ${{ github.head_ref }})
         echo "{{ github.head_ref }}: ${{ github.head_ref }}"
         echo "{{ env.GH_API_TOKEN }}: ${{ env.GH_API_TOKEN }}"
         echo "{{ github.repository }}: ${{ github.repository }}"
-        head=$(git rev-parse ${{ github.head_ref }})
-        ./get_pull_request_details_for_hash_github.sh ${head} ${{ env.GH_API_TOKEN }} ${{ github.repository }}
+        echo "{{ head }}: ${head}"
+        ./get_pull_request_details_for_hash_github.sh -c ${head} -t ${{ env.GH_API_TOKEN }} -r ${{ github.repository }}
       shell: bash
