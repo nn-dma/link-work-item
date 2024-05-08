@@ -16,7 +16,7 @@ runs:
       run: |
         cd scripts
         head=$(git rev-parse ${{ github.head_ref }})
-        echo "{{ github.head_ref }}: ${{ github.head_ref }}"
+        echo "{{ github.sha }}: ${{ env.GH_SHA }}"
         echo "{{ env.GH_API_TOKEN }}: ${{ env.GH_API_TOKEN }}"
         echo "{{ github.repository }}: ${{ github.repository }}"
         echo "{{ head }}: ${head}"
