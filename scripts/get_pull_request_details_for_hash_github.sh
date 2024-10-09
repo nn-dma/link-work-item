@@ -45,10 +45,13 @@ done
 #python_file="get_pull_request_details_for_hash_github.py"
 #python_script_path="$self_dir/$python_file"
 #echo "python script path: $python_script_path"
-
+env
+gh pr list --state closed
+exit 1
 if [ `gh pr list --state closed | grep -E " - IT Change #[0-9]+$"` ]; then
   echo "IT Change title is compliant"
 else
+  gh pr list --state closed
   echo "Couldn't any closed PR with IT Change title."
   echo "It should look like this: 'Release 1.0.0 - IT Change #1234'"
   exit 1
