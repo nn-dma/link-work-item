@@ -16,7 +16,7 @@ runs:
       run: |
         cd scripts
         echo "{{ github.sha }}: ${{ env.GH_SHA }}"
-        echo "{{ env.GH_API_TOKEN }}: ${{ env.GH_API_TOKEN }}"
+        echo "{{ env.GH_TOKEN }}: ${{ env.GH_TOKEN }}"
         echo "{{ github.repository }}: ${{ github.repository }}"
-        ./get_pull_request_details_for_hash_github.sh -c ${{ env.GH_SHA }} -t ${{ env.GH_API_TOKEN }} -r ${{ github.repository }}
+        ./get_pull_request_details_for_hash_github.sh -c ${{ env.GH_SHA }} -t ${{ env.GH_TOKEN }} -r ${{ github.repository }}
       shell: bash
