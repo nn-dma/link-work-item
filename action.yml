@@ -2,7 +2,7 @@ name: "Check for IT Change ID in PR title"
 description: "Checks for IT Change ID in PR title"
 
 permissions:
-  pull-request: read
+  pull-requests: read  
 
 runs:
   using: "composite"
