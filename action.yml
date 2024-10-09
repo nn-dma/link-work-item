@@ -14,7 +14,7 @@ runs:
         echo ${{ github.repository }}
         echo
         echo
-        gh
+        gh pr list --state closed
         echo
         echo
       shell: bash
