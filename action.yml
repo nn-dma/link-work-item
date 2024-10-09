@@ -6,13 +6,12 @@ runs:
   steps:
     - name: "Checkout codebase"
       uses: actions/checkout@v4
-      with:
-        repository: nn-dma/link-work-item
-        path: .
-        fetch-depth: 0
 
     - name: "Check for IT Change ID"
       run: |
+        echo "Hello world"
+        pwd
+        exit 0
         cd scripts
         echo "{{ github.repository }}: ${{ github.repository }}"
         env
