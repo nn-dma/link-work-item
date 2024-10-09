@@ -39,12 +39,21 @@ while [[ $# -gt 0 ]]; do
   esac
 done
 
-self_dir=$(dirname "$(realpath "$0")")
-echo "self directory: $self_dir"
+#self_dir=$(dirname "$(realpath "$0")")
+#echo "self directory: $self_dir"
 
-python_file="get_pull_request_details_for_hash_github.py"
-python_script_path="$self_dir/$python_file"
+#python_file="get_pull_request_details_for_hash_github.py"
+#python_script_path="$self_dir/$python_file"
 #echo "python script path: $python_script_path"
 
-pr=$(python3 "$python_script_path" --commit $commit_hash --token $github_token --repo $repo)
-echo "$pr"
+if [ `gh pr list --state closed | grep -E " - IT Change #[0-9]+$"` ]; then
+  echo "IT Change title is compliant"
+else
+  echo "Couldn't any closed PR with IT Change title."
+  echo "It should look like this: 'Release 1.0.0 - IT Change #1234'"
+  exit 1
+fi
+
+#gh pr list --state closed | grep Release | grep -E -o "[0-9]*\.[0-9]*\.[0-9]* " | head -1 | grep -E -o "[0-9]* +$"
+#pr=$(python3 "$python_script_path" --commit $commit_hash --token $github_token --repo $repo)
+#echo "$pr"
