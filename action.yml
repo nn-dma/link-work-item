@@ -14,10 +14,6 @@ runs:
     - name: "Check for IT Change ID"
       run: |
         cd scripts
-        echo "{{ github.sha }}: ${{ env.GH_SHA }}"
-        echo "{{ env.ALESSANDRO_TOKEN }}: ${{ env.GH_TOKEN }}"
-        echo "{{ github.repository }}: ${{ github.repository }}"
-        export GITHUB_TOKEN=${{ env.GH_TOKEN }}
         env
         gh pr list --state closed
         echo
@@ -31,4 +27,6 @@ runs:
           echo "It should look like this: 'Release 1.0.0 - IT Change #1234'"
           exit 1
         fi
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       shell: bash
