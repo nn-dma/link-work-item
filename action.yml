@@ -12,4 +12,9 @@ runs:
         echo "Hello world"
         pwd
         echo ${{ github.repository }}
+        echo
+        echo
+        gh
+        echo
+        echo
       shell: bash
