@@ -24,9 +24,13 @@ runs:
         echo
         echo $latest_pr_number
         echo
-        #title_validator=$( echo ${latest_pr_number} | grep -E "\- IT Change #[0-9]*" )
-        title_validator=$( echo ${latest_pr_number} | grep -E "Release" )
-        echo $title_validator
+        if [ `echo ${latest_pr_number} | grep -E "\- IT Change #[0-9]*"` ]; then
+          echo "PR title looks good"
+        else
+          echo "PR title doesn't comply with the format:"
+          echo "<Something something ..> - IT Change #<number>"
+          exit 1
+        fi
         echo
 
       shell: bash
