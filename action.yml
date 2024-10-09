@@ -30,4 +30,3 @@ runs:
         fi
       env:
         GH_TOKEN: ${{ secrets.TEST_TOKEN }}
-      shell: bash
