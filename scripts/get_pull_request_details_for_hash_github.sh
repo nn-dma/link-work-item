@@ -49,6 +49,7 @@ done
 if [ `gh pr list --state closed | grep -E " - IT Change #[0-9]+$"` ]; then
   echo "IT Change title is compliant"
 else
+  gh pr list --state closed
   echo "Couldn't any closed PR with IT Change title."
   echo "It should look like this: 'Release 1.0.0 - IT Change #1234'"
   exit 1
