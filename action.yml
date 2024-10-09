@@ -15,7 +15,7 @@ runs:
       run: |
         cd scripts
         echo "{{ github.sha }}: ${{ env.GH_SHA }}"
-        echo "{{ env.GH_TOKEN }}: ${{ env.GH_TOKEN }}"
+        echo "{{ env.ALESSANDRO_TOKEN }}: ${{ env.GH_TOKEN }}"
         echo "{{ github.repository }}: ${{ github.repository }}"
         export GITHUB_TOKEN=${{ env.GH_TOKEN }}
         env
