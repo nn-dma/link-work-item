@@ -19,5 +19,18 @@ runs:
         echo "{{ env.GH_TOKEN }}: ${{ env.GH_TOKEN }}"
         echo "{{ github.repository }}: ${{ github.repository }}"
         export GITHUB_TOKEN=${{ env.GH_TOKEN }}
+        env
+        gh pr list --state closed
+        echo
+        echo AAAAAAAAA
+        echo
+        if [ `gh pr list --state closed | grep -E " - IT Change #[0-9]+$"` ]; then
+          echo "IT Change title is compliant"
+        else
+          gh pr list --state closed
+          echo "Couldn't any closed PR with IT Change title."
+          echo "It should look like this: 'Release 1.0.0 - IT Change #1234'"
+          exit 1
+        fi
         ./get_pull_request_details_for_hash_github.sh -c ${{ env.GH_SHA }} -t ${{ env.GH_TOKEN }} -r ${{ github.repository }}
       shell: bash
