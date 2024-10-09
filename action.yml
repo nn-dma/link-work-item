@@ -32,5 +32,4 @@ runs:
           echo "It should look like this: 'Release 1.0.0 - IT Change #1234'"
           exit 1
         fi
-        ./get_pull_request_details_for_hash_github.sh -c ${{ env.GH_SHA }} -t ${{ env.GH_TOKEN }} -r ${{ github.repository }}
       shell: bash
