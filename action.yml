@@ -11,4 +11,5 @@ runs:
       run: |
         echo "Hello world"
         pwd
+        echo ${{ github.repository }}
       shell: bash
