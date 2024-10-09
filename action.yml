@@ -28,5 +28,5 @@ runs:
           echo "It should look like this: 'Release 1.0.0 - IT Change #1234'"
           exit 1
         fi
-      env:
+      with:
         GH_TOKEN: ${{ secrets.TEST_TOKEN }}
