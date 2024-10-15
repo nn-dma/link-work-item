@@ -24,7 +24,9 @@ runs:
         echo
         echo $latest_pr_number
         echo
-        if [ `echo ${latest_pr_number} | grep -E -q "\- IT Change #[0-9]*"` ]; then
+        echo ${latest_pr_number} | grep -E -q "\- IT Change #[0-9]*"
+        RETURN_CODE=$?
+        if [ $RETURN_CODE -eq 0 ]; then
           echo "PR title looks good"
         else
           echo "PR title doesn't comply with the format:"
