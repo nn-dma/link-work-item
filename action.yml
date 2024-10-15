@@ -24,13 +24,15 @@ runs:
         echo
         echo $latest_pr_number
         echo
-        if [ `echo ${latest_pr_number} | grep -E -q "\- IT Change #[0-9]*"` ]; then
-          echo "PR title looks good"
-        else
-          echo "PR title doesn't comply with the format:"
-          echo "<Something something ..> - IT Change #<number>"
-          exit 1
-        fi
-        echo
+        echo ${latest_pr_number} | grep -E -q "\- IT Change #[0-9]*" || (echo "PR title doesn't comply with the format: <Something something ..> - IT Change #<number>" && exit 1)
+        echo "PR title looks good"
+
+        #if [ `echo ${latest_pr_number} | grep -E -q "\- IT Change #[0-9]*"` ]; then
+        #else
+        #  echo "PR title doesn't comply with the format:"
+        #  echo ""
+        #  exit 1
+        #fi
+        #echo
 
       shell: bash
