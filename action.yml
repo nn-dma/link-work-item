@@ -24,7 +24,7 @@ runs:
         echo
         echo $latest_pr_number
         echo
-        echo ${latest_pr_number} | grep -E -q "\- IT Change #[0-9]*"
+        TEST_COMMAND=$(echo ${latest_pr_number} | grep -E -q "\- IT Change #[0-9]*")
         RETURN_CODE=$?
         if [ $RETURN_CODE -eq 0 ]; then
           echo "PR title looks good"
