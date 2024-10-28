@@ -11,7 +11,7 @@ runs:
       run: |
         echo "Here is the list of merged PRs"
         echo
-        gh pr list --state closed
+        gh pr list --state closed || (echo "No close PRs found, exiting gracefully .." && exit 0)
         echo
         latest_pr_number=$(gh pr list --state closed | grep "Release" | grep -E "[0-9]*\.[0-9]*\.[0-9]* " | head -1)
         echo
