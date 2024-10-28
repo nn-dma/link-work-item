@@ -19,7 +19,7 @@ runs:
         echo
         echo $latest_pr_number
         echo
-        echo ${latest_pr_number} | grep -E -q "\- IT Change #[0-9]*" || \
+        echo ${latest_pr_number} | grep -E -q "\- IT Change #[0-9]+" || \
         (echo "PR title doesn't comply with the format: <Something something ..> - IT Change #<number>" && exit 1)
         echo "PR title looks good"
       shell: bash
